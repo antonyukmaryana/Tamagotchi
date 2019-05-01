@@ -1,0 +1,30 @@
+@using Tamagotchi.Models
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+  </head>
+  <body>
+    <h1>Tamagotchi</h1>
+      <ul>
+      @if(Model.Count == 0)
+      {
+        <p>You have no Tamagotchi!</p>
+        
+      }
+      @if(Model.Count !=0)
+      {
+        @foreach (Tamagotchi tamagotchi in Model)
+        {
+          <li><a href='/tamagotchi/@tamagotchi.GetId()'>@tamagotchi.GetName()</a></li>
+        }
+      }
+      </ul>
+    <a href="/tamagotchi/new">Add a new Tamagotchi.</a>
+    <form action="/tamagotchi/delete" method="post">
+      <button type="submit" name="button">End all Tamagotchi!</button>
+    </form>
+  </body>
+</html>
